@@ -1,47 +1,67 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".ui.fragment.IsDetayFragment">
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <androidx.appcompat.widget.Toolbar
-        android:id="@+id/toolbarDetay"
+    <data>
+        <variable
+            name="isDetayToolbarBaslik"
+            type="String" />
+
+        <variable
+            name="isNesnesi"
+            type="com.example.odev7.data.entity.Is" />
+
+        <variable
+            name="isDetayFragment"
+            type="com.example.odev7.ui.fragment.IsDetayFragment" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="?attr/colorPrimary"
-        android:minHeight="?attr/actionBarSize"
-        android:theme="?attr/actionBarTheme"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:layout_height="match_parent"
+        tools:context=".ui.fragment.IsDetayFragment">
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/textInputLayout"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="128dp"
-        android:layout_marginEnd="32dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/toolbarDetay">
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/editTextIs"
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbarDetay"
+            app:title="@{isDetayToolbarBaslik}"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Yapılacak İş" />
-    </com.google.android.material.textfield.TextInputLayout>
+            android:background="?attr/colorPrimary"
+            android:minHeight="?attr/actionBarSize"
+            android:theme="?attr/actionBarTheme"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-    <Button
-        android:id="@+id/buttonKaydet"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="128dp"
-        android:layout_marginEnd="32dp"
-        android:text="GÜNCELLE"
-        app:layout_constraintTop_toBottomOf="@id/textInputLayout" />
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/textInputLayout"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="128dp"
+            android:layout_marginEnd="32dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/toolbarDetay">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/editTextIs"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Yapılacak İş"
+                android:text="@{isNesnesi.yapilacak_is}"/>
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <Button
+            android:id="@+id/buttonKaydet"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="128dp"
+            android:layout_marginEnd="32dp"
+            android:text="GÜNCELLE"
+            android:onClick="@{()-> isDetayFragment.buttonGuncelleTikla(isNesnesi.yapilacak_id,editTextIs.getText().toString())}"
+            app:layout_constraintTop_toBottomOf="@id/textInputLayout" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
