@@ -11,10 +11,10 @@
         android:label="fragment_anasayfa"
         tools:layout="@layout/fragment_anasayfa" >
         <action
-            android:id="@+id/action_anasayfaFragment_to_isDetayFragment2"
+            android:id="@+id/detayGecis"
             app:destination="@id/isDetayFragment" />
         <action
-            android:id="@+id/action_anasayfaFragment_to_isKayitFragment2"
+            android:id="@+id/kayitGecis"
             app:destination="@id/isKayitFragment" />
     </fragment>
     <fragment
@@ -28,7 +28,7 @@
         android:label="fragment_is_detay"
         tools:layout="@layout/fragment_is_detay" >
         <argument
-            android:name="is"
+            android:name="yapilacak_is"
             app:argType="com.example.odev7.data.entity.Is" />
     </fragment>
 </navigation>
