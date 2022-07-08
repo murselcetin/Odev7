@@ -2,12 +2,14 @@ package com.example.odev7.ui.viewmodel
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.example.odev7.data.entity.Is
+import com.example.odev7.data.entity.Yapilacaklar
 import com.example.odev7.data.repo.IsDaoRepository
+import dagger.hilt.android.lifecycle.HiltViewModel
+import javax.inject.Inject
 
-class AnasayfaFragmentViewModel : ViewModel() {
-    val irepo = IsDaoRepository()
-    var yapilacaklarListesi = MutableLiveData<List<Is>>()
+@HiltViewModel
+class AnasayfaFragmentViewModel @Inject constructor (var irepo: IsDaoRepository) : ViewModel() {
+    var yapilacaklarListesi = MutableLiveData<List<Yapilacaklar>>()
 
     init {
         isleriYukle()

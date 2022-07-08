@@ -10,7 +10,7 @@
 
         <variable
             name="isNesnesi"
-            type="com.example.odev7.data.entity.Is" />
+            type="com.example.odev7.data.entity.Yapilacaklar" />
 
         <variable
             name="isDetayFragment"

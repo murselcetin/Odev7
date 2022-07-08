@@ -2,16 +2,20 @@ package com.example.odev7.data.repo
 
 import android.util.Log
 import androidx.lifecycle.MutableLiveData
-import com.example.odev7.data.entity.Is
+import com.example.odev7.data.entity.Yapilacaklar
+import com.example.odev7.room.YapilacakDao
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 
-class IsDaoRepository {
-    var yapilacakListesi: MutableLiveData<List<Is>>
+class IsDaoRepository(var idao: YapilacakDao) {
+    var yapilacakListesi: MutableLiveData<List<Yapilacaklar>>
 
     init {
         yapilacakListesi = MutableLiveData()
     }
 
-    fun isleriGetir(): MutableLiveData<List<Is>> {
+    fun isleriGetir(): MutableLiveData<List<Yapilacaklar>> {
         return yapilacakListesi
     }
 
@@ -32,13 +36,8 @@ class IsDaoRepository {
     }
 
     fun tumIsleriAl() {
-        val liste = ArrayList<Is>()
-        val i1 = Is(1, "Ekmek Al")
-        val i2 = Is(2, "El yıka")
-        val i3 = Is(3, "Yemek Ye")
-        liste.add(i1)
-        liste.add(i2)
-        liste.add(i3)
-        yapilacakListesi.value = liste
+        val job = CoroutineScope(Dispatchers.Main).launch {
+            yapilacakListesi.value = idao.tumYapilacaklar()
+        }
     }
 }

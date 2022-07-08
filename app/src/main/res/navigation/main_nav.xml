@@ -29,6 +29,6 @@
         tools:layout="@layout/fragment_is_detay" >
         <argument
             android:name="yapilacak_is"
-            app:argType="com.example.odev7.data.entity.Is" />
+            app:argType="com.example.odev7.data.entity.Yapilacaklar" />
     </fragment>
 </navigation>
