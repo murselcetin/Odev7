@@ -10,8 +10,9 @@ import androidx.fragment.app.viewModels
 import com.example.odev7.R
 import com.example.odev7.databinding.FragmentIsKayitBinding
 import com.example.odev7.ui.viewmodel.IsKayitFragmentViewModel
+import dagger.hilt.android.AndroidEntryPoint
 
-
+@AndroidEntryPoint
 class IsKayitFragment : Fragment() {
     private lateinit var binding: FragmentIsKayitBinding
     private lateinit var viewModel: IsKayitFragmentViewModel

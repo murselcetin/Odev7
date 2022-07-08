@@ -12,8 +12,9 @@ import com.example.odev7.R
 import com.example.odev7.databinding.FragmentAnasayfaBinding
 import com.example.odev7.databinding.FragmentIsDetayBinding
 import com.example.odev7.ui.viewmodel.IsDetayFragmetViewModel
+import dagger.hilt.android.AndroidEntryPoint
 
-
+@AndroidEntryPoint
 class IsDetayFragment : Fragment() {
     private lateinit var binding: FragmentIsDetayBinding
     private lateinit var viewModel: IsDetayFragmetViewModel

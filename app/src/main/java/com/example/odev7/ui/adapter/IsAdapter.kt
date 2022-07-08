@@ -7,7 +7,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.RecyclerView
 import com.example.odev7.R
-import com.example.odev7.data.entity.Is
+import com.example.odev7.data.entity.Yapilacaklar
 import com.example.odev7.databinding.CardTasarimBinding
 import com.example.odev7.ui.fragment.AnasayfaFragmentDirections
 import com.example.odev7.ui.viewmodel.AnasayfaFragmentViewModel
@@ -16,7 +16,7 @@ import com.google.android.material.snackbar.Snackbar
 
 class IsAdapter(
     var mContext: Context,
-    var yapilacaklarListesi: List<Is>,
+    var yapilacaklarListesi: List<Yapilacaklar>,
     var viewModel: AnasayfaFragmentViewModel
 ) : RecyclerView.Adapter<IsAdapter.CardTasarimTutucu>() {
     inner class CardTasarimTutucu(binding: CardTasarimBinding) :

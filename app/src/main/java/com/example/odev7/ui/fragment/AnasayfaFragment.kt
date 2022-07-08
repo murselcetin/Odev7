@@ -13,8 +13,9 @@ import com.example.odev7.databinding.FragmentAnasayfaBinding
 import com.example.odev7.ui.adapter.IsAdapter
 import com.example.odev7.ui.viewmodel.AnasayfaFragmentViewModel
 import com.example.odev7.util.gecisYap
+import dagger.hilt.android.AndroidEntryPoint
 
-
+@AndroidEntryPoint
 class AnasayfaFragment : Fragment() ,SearchView.OnQueryTextListener{
     private lateinit var binding: FragmentAnasayfaBinding
     private lateinit var viewModel: AnasayfaFragmentViewModel
