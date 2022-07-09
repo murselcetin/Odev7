@@ -16,7 +16,7 @@ import com.example.odev7.util.gecisYap
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class AnasayfaFragment : Fragment() ,SearchView.OnQueryTextListener{
+class AnasayfaFragment : Fragment(), SearchView.OnQueryTextListener {
     private lateinit var binding: FragmentAnasayfaBinding
     private lateinit var viewModel: AnasayfaFragmentViewModel
     override fun onCreateView(
@@ -29,7 +29,7 @@ class AnasayfaFragment : Fragment() ,SearchView.OnQueryTextListener{
         binding.anasayfaToolbarBaslik = "Yapılacak İşler"
         (activity as AppCompatActivity).setSupportActionBar(binding.toolbarAnasayfa)
 
-        viewModel.yapilacaklarListesi.observe(viewLifecycleOwner){
+        viewModel.yapilacaklarListesi.observe(viewLifecycleOwner) {
             val adapter = IsAdapter(requireContext(), it, viewModel)
             binding.isAdapter = adapter
         }
@@ -54,6 +54,11 @@ class AnasayfaFragment : Fragment() ,SearchView.OnQueryTextListener{
         val searchView = item.actionView as SearchView
         searchView.setOnQueryTextListener(this)
         super.onCreateOptionsMenu(menu, inflater)
+    }
+
+    override fun onResume() {
+        super.onResume()
+        viewModel.isleriYukle()
     }
 
     override fun onQueryTextSubmit(query: String): Boolean {
