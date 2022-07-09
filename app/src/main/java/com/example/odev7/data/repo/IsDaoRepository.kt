@@ -20,19 +20,31 @@ class IsDaoRepository(var idao: YapilacakDao) {
     }
 
     fun isKayit(yapilacak_is: String) {
-        Log.e("İş Kayıt", "$yapilacak_is")
+        val job = CoroutineScope(Dispatchers.Main).launch {
+            val yeniIs = Yapilacaklar(0, yapilacak_is)
+            idao.isEkle(yeniIs)
+        }
     }
 
     fun isGuncelle(yapilacak_id: Int, yapilacak_is: String) {
-        Log.e("İş Güncelle", "$yapilacak_id - $yapilacak_is")
+        val job = CoroutineScope(Dispatchers.Main).launch {
+            val guncellenenIs = Yapilacaklar(yapilacak_id, yapilacak_is)
+            idao.isGuncelle(guncellenenIs)
+        }
     }
 
     fun isAra(aramaKelimesi: String) {
-        Log.e("İş Ara", aramaKelimesi)
+        val job = CoroutineScope(Dispatchers.Main).launch {
+            yapilacakListesi.value = idao.isArama(aramaKelimesi)
+        }
     }
 
     fun isSil(yapilacak_id: Int) {
-        Log.e("İş Sil", yapilacak_id.toString())
+        val job = CoroutineScope(Dispatchers.Main).launch {
+            val silinenIs = Yapilacaklar(yapilacak_id, "")
+            idao.isSil(silinenIs)
+            tumIsleriAl()
+        }
     }
 
     fun tumIsleriAl() {
